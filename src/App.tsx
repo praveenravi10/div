@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ToastProvider } from '@/context/ToastContext';
 import { Navbar } from '@/components/layout/Navbar';
@@ -11,7 +11,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <ToastProvider>
-        <BrowserRouter>
+        <HashRouter>
           {/* Skip-to-main for accessibility */}
           <a
             href="#main-content"
@@ -50,7 +50,7 @@ export default function App() {
           </div>
 
           <ToastContainer />
-        </BrowserRouter>
+        </HashRouter>
       </ToastProvider>
     </ThemeProvider>
   );
