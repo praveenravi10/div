@@ -14,7 +14,7 @@ import { ContactFormData } from '@/types';
 const contactSchema = z.object({
   name: z
     .string()
-    .min(2, 'Name must be at least 2 characters')
+    .min(2, 'Name must be at least 2 characters.')
     .max(60, 'Name is too long'),
   email: z.string().email('Please enter a valid email'),
   subject: z
