@@ -1,0 +1,150 @@
+import { motion } from 'framer-motion';
+import {
+  MapPin,
+  Briefcase,
+  GraduationCap,
+  Coffee,
+  Phone,
+  Wifi,
+  Code,
+  Zap,
+} from 'lucide-react';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Badge } from '@/components/ui/Badge';
+
+const STATS = [
+  { value: '3+', label: 'Years Experience', icon: Briefcase },
+  { value: '15+', label: 'Projects Shipped', icon: Code },
+  { value: '500+', label: 'Daily Agent Users', icon: Phone },
+  { value: '99.9%', label: 'System Uptime', icon: Zap },
+];
+
+const INTERESTS = [
+  { icon: Code, text: 'React & TypeScript' },
+  { icon: Wifi, text: 'Real-time systems' },
+  { icon: GraduationCap, text: 'Frontend architecture' },
+  { icon: Coffee, text: 'Agile & clean code' },
+];
+
+export function About() {
+  return (
+    <section id="about" className="py-24 sm:py-32" aria-label="About me">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <SectionHeading
+          tag="who I am"
+          title="About Me"
+          subtitle="A bit more about the person behind the code"
+        />
+
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left — Avatar + stats */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center lg:items-start gap-8"
+          >
+            {/* Avatar placeholder */}
+            <div className="relative">
+              <div className="w-52 h-52 rounded-2xl bg-gradient-to-br from-primary-600/30 to-accent-600/30 border border-primary-500/20 flex items-center justify-center text-8xl font-bold text-white/20 select-none">
+                P
+              </div>
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 bg-dark-card border border-dark-border rounded-xl px-3 py-2 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-medium text-gray-300">Available for hire</span>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-center gap-2 text-gray-400 text-sm">
+              <MapPin className="w-4 h-4 text-primary-400" />
+              <span>Coimbatore, TN, India</span>
+            </div>
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+              {STATS.map(({ value, label, icon: Icon }, i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-dark-card border border-dark-border rounded-xl p-4 flex flex-col gap-2"
+                >
+                  <Icon className="w-5 h-5 text-primary-400" />
+                  <div className="text-2xl font-bold text-white">{value}</div>
+                  <div className="text-xs text-gray-400">{label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right — Bio */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <div className="space-y-4 text-gray-400 leading-relaxed">
+              <p>
+                Hi! I&apos;m <span className="text-white font-semibold">R Praveen</span>, a Front
+                End Developer with <span className="text-primary-400 font-medium">3+ years</span> of
+                experience building scalable, high-performance web applications. My core stack is{' '}
+                <span className="text-white font-medium">React.js + TypeScript</span>, and I
+                specialize in modern UI architecture, state management, and responsive design.
+              </p>
+              <p>
+                I&apos;ve built AI-powered contact center platforms with WebRTC video calling, React
+                admin dashboards for commercial finance applications, and OTT streaming UIs —
+                integrating frontend systems with{' '}
+                <span className="text-emerald-400 font-medium">Node.js</span> and{' '}
+                <span className="text-emerald-400 font-medium">.NET Core APIs</span> in Agile team
+                environments.
+              </p>
+              <p>
+                I care deeply about{' '}
+                <span className="text-white font-medium">code quality, performance,</span> and
+                delivering{' '}
+                <span className="text-accent-400 font-medium">
+                  clean, user-centric solutions
+                </span>{' '}
+                that solve real problems.
+              </p>
+            </div>
+
+            {/* Interests */}
+            <div>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-4">
+                What I&apos;m into
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {INTERESTS.map(({ icon: Icon, text }) => (
+                  <Badge key={text} variant="primary" className="flex items-center gap-1.5 py-1.5">
+                    <Icon className="w-3 h-3" />
+                    {text}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Tech mention */}
+            <div className="p-4 rounded-xl bg-dark-card border border-dark-border font-mono text-sm">
+              <p className="text-gray-500">// current focus</p>
+              <p className="text-primary-400 mt-1">
+                const stack = [<span className="text-emerald-400">&apos;React&apos;</span>,{' '}
+                <span className="text-emerald-400">&apos;TypeScript&apos;</span>,{' '}
+                <span className="text-emerald-400">&apos;Redux&apos;</span>,{' '}
+                <span className="text-emerald-400">&apos;Node.js&apos;</span>];
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
