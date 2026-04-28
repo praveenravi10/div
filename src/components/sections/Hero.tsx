@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/Button';
 import { scrollToSection } from '@/lib/utils';
 
 const ROLES = [
-  'Frontend Developer',
-  'React Specialist',
-  'WebRTC Engineer',
-  'TypeScript Enthusiast',
+  'AI Integration Expert',
+  'Frontend Engineer',
+  'Full Stack Developer',
+  'React JS Developer',
 ];
 
 function TypingText({ texts }: { texts: string[] }) {
