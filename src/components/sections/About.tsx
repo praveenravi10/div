@@ -46,18 +46,24 @@ export function About() {
             className="flex flex-col items-center lg:items-start gap-8"
           >
             {/* Avatar */}
-            <div className="relative">
-              <div className="w-52 h-52 rounded-2xl overflow-hidden border-2 border-primary-500/30 shadow-glow">
-                <img
-                  src={`${import.meta.env.BASE_URL}praveen.jpeg`}
-                  alt="Praveen R"
-                  className="w-full h-full object-cover object-top"
-                  loading="eager"
-                />
+            <div className="relative flex flex-col items-center">
+              {/* Glow behind circle */}
+              <div className="absolute w-60 h-60 rounded-full bg-gradient-to-tr from-primary-500 to-accent-500 opacity-20 blur-3xl" />
+              {/* Spinning gradient ring */}
+              <div className="relative w-56 h-56 rounded-full p-[3px] bg-gradient-to-tr from-primary-400 via-accent-400 to-emerald-400 shadow-glow-lg">
+                {/* Photo */}
+                <div className="w-full h-full rounded-full overflow-hidden bg-dark-bg ring-2 ring-dark-bg">
+                  <img
+                    src={`${import.meta.env.BASE_URL}praveen.jpeg`}
+                    alt="Praveen R"
+                    className="w-full h-full object-cover object-top scale-105"
+                    loading="eager"
+                  />
+                </div>
               </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-dark-card border border-dark-border rounded-xl px-3 py-2 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              {/* Floating badge centred below */}
+              <div className="mt-4 bg-dark-card border border-dark-border rounded-full px-4 py-2 flex items-center gap-2 shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-medium text-gray-300">Available for hire</span>
               </div>
             </div>
