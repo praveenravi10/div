@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Code2 } from 'lucide-react';
-import { useThemeContext } from '@/context/ThemeContext';
+import { Menu, X, Code2 } from 'lucide-react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { scrollToSection, cn } from '@/lib/utils';
@@ -16,7 +15,6 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
-  const { isDark, toggleTheme } = useThemeContext();
   const activeSection = useActiveSection();
   const scrollProgress = useScrollProgress();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -117,23 +115,6 @@ export function Navbar() {
             >
               Resume
             </a>
-            <button
-              onClick={toggleTheme}
-              className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={isDark ? 'moon' : 'sun'}
-                  initial={{ scale: 0, rotate: -90 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  exit={{ scale: 0, rotate: 90 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                </motion.span>
-              </AnimatePresence>
-            </button>
 
             {/* Mobile hamburger */}
             <button
