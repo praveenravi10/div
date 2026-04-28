@@ -16,6 +16,9 @@ const Projects = lazy(() =>
 const Experience = lazy(() =>
   import('@/components/sections/Experience').then((m) => ({ default: m.Experience }))
 );
+const Services = lazy(() =>
+  import('@/components/sections/Services').then((m) => ({ default: m.Services }))
+);
 const Contact = lazy(() =>
   import('@/components/sections/Contact').then((m) => ({ default: m.Contact }))
 );
@@ -59,6 +62,12 @@ export default function Home() {
       <ErrorBoundary>
         <Suspense fallback={<SectionFallback />}>
           <Experience />
+        </Suspense>
+      </ErrorBoundary>
+
+      <ErrorBoundary>
+        <Suspense fallback={<SectionFallback />}>
+          <Services />
         </Suspense>
       </ErrorBoundary>
 
