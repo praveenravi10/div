@@ -136,11 +136,11 @@ export function Hero() {
           transition={{ delay: 0.6 }}
           className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          3+ years building scalable, high-performance web apps with{' '}
+          4 years building scalable, high-performance web apps with{' '}
           <span className="text-primary-400 font-medium">React.js</span>,{' '}
           <span className="text-accent-400 font-medium">TypeScript</span>, and integrating
           frontend systems with{' '}
-          <span className="text-emerald-400 font-medium">Node.js & .NET Core APIs</span>.
+          <span className="text-emerald-400 font-medium">Node.js & MongoDB</span>.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -181,7 +181,7 @@ export function Hero() {
           className="flex items-center justify-center gap-4"
         >
           {[
-            { href: 'https://github.com/praveen', icon: Github, label: 'GitHub' },
+            { href: 'https://github.com/praveenravi10', icon: Github, label: 'GitHub' },
             { href: 'https://www.linkedin.com/in/praveenr10', icon: Linkedin, label: 'LinkedIn' },
           ].map(({ href, icon: Icon, label }) => (
             <motion.a

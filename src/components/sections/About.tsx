@@ -13,7 +13,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Badge } from '@/components/ui/Badge';
 
 const STATS = [
-  { value: '3+', label: 'Years Experience', icon: Briefcase },
+  { value: '4+', label: 'Years Experience', icon: Briefcase },
   { value: '15+', label: 'Projects Shipped', icon: Code },
   { value: '500+', label: 'Daily Agent Users', icon: Phone },
   { value: '99.9%', label: 'System Uptime', icon: Zap },
@@ -92,19 +92,20 @@ export function About() {
           >
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>
-                Hi! I&apos;m <span className="text-white font-semibold">R Praveen</span>, a Front
-                End Developer with <span className="text-primary-400 font-medium">3+ years</span> of
-                experience building scalable, high-performance web applications. My core stack is{' '}
+                Hi! I&apos;m <span className="text-white font-semibold">Praveen R</span>, a Skilled
+                Frontend Developer with <span className="text-primary-400 font-medium">4 years</span> of
+                experience building intuitive, high-performance web applications using React, Redux,
+                JavaScript, and TypeScript. My core stack is{' '}
                 <span className="text-white font-medium">React.js + TypeScript</span>, and I
                 specialize in modern UI architecture, state management, and responsive design.
               </p>
               <p>
-                I&apos;ve built AI-powered contact center platforms with WebRTC video calling, React
-                admin dashboards for commercial finance applications, and OTT streaming UIs —
-                integrating frontend systems with{' '}
-                <span className="text-emerald-400 font-medium">Node.js</span> and{' '}
-                <span className="text-emerald-400 font-medium">.NET Core APIs</span> in Agile team
-                environments.
+                Strong in collaborating directly with clients, gathering requirements, and delivering
+                tailored solutions in Agile environments. While primarily focused on frontend, I have
+                also worked on backend architecture through personal projects using{' '}
+                <span className="text-emerald-400 font-medium">Node.js</span>,{' '}
+                <span className="text-emerald-400 font-medium">Express</span>, and{' '}
+                <span className="text-emerald-400 font-medium">MongoDB</span>.
               </p>
               <p>
                 I care deeply about{' '}

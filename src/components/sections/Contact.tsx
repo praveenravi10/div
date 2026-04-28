@@ -1,298 +1,144 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Linkedin, Github, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Button } from '@/components/ui/Button';
-import { useToast } from '@/context/ToastContext';
-import { cn } from '@/lib/utils';
-import { ContactFormData } from '@/types';
 
-// ─── Validation schema ───────────────────────────────────────────
-const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Name must be at least 2 characters.')
-    .max(60, 'Name is too long'),
-  email: z.string().email('Please enter a valid email'),
-  subject: z
-    .string()
-    .min(5, 'Subject must be at least 5 characters')
-    .max(100, 'Subject is too long'),
-  message: z
-    .string()
-    .min(20, 'Message must be at least 20 characters')
-    .max(1000, 'Message is too long'),
-});
+const CONTACT_ITEMS = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'rpraveen.0010@gmail.com',
+    href: 'mailto:rpraveen.0010@gmail.com',
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: '+91 9159305465',
+    href: 'tel:+919159305465',
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: 'Coimbatore, TN, India',
+    href: null,
+  },
+];
 
-// ─── Sub-components ──────────────────────────────────────────────
-function FormField({
-  label,
-  error,
-  required,
-  children,
-}: {
-  label: string;
-  error?: string;
-  required?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="space-y-1.5">
-      <label className="text-sm font-medium text-gray-300">
-        {label}
-        {required && <span className="text-primary-400 ml-0.5">*</span>}
-      </label>
-      {children}
-      {error && (
-        <motion.p
-          initial={{ opacity: 0, y: -5 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-xs text-red-400 flex items-center gap-1"
-          role="alert"
-        >
-          {error}
-        </motion.p>
-      )}
-    </div>
-  );
-}
+const SOCIALS = [
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/praveenr10',
+    href: 'https://www.linkedin.com/in/praveenr10',
+  },
+  {
+    icon: Github,
+    label: 'GitHub',
+    value: 'github.com/praveenravi10',
+    href: 'https://github.com/praveenravi10',
+  },
+];
 
-const inputClass = cn(
-  'w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white text-sm',
-  'placeholder-gray-500 transition-all duration-200',
-  'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent',
-  'hover:border-white/20'
-);
-
-// ─── Main component ──────────────────────────────────────────────
 export function Contact() {
-  const { addToast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    watch,
-    formState: { errors, isValid },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-    mode: 'onTouched',
-  });
-
-  const messageLength = watch('message')?.length ?? 0;
-
-  const onSubmit = async (_data: ContactFormData) => {
-    setIsSubmitting(true);
-    try {
-      // Simulate API call — wire up EmailJS / your API here
-      await new Promise((res) => setTimeout(res, 1500));
-      addToast('Message sent! I\'ll get back to you soon.', 'success');
-      reset();
-    } catch {
-      addToast('Something went wrong. Please try again.', 'error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <section id="contact" className="py-24 sm:py-32" aria-label="Contact">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeading
           tag="get in touch"
           title="Let's Work Together"
-          subtitle="Have a project in mind or want to discuss opportunities? I'd love to hear from you."
+          subtitle="Open to full-time roles, contracts, and collaborations. Reach out directly — I typically respond within 24 hours."
         />
 
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Left — Contact info */}
+        <div className="mt-16 space-y-10">
+          {/* Status */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="flex justify-center"
           >
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: Mail,
-                    label: 'Email',
-                    value: 'praveenravi550@gmail.com',
-                    href: 'mailto:praveenravi550@gmail.com',
-                  },
-                  {
-                    icon: MapPin,
-                    label: 'Location',
-                    value: 'Coimbatore, TN, India',
-                    href: null,
-                  },
-                  {
-                    icon: MessageSquare,
-                    label: 'Availability',
-                    value: 'Open to full-time & contracts',
-                    href: null,
-                  },
-                ].map(({ icon: Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-primary-500/10 border border-primary-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon className="w-4 h-4 text-primary-400" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider">{label}</p>
-                      {href ? (
-                        <a
-                          href={href}
-                          className="text-sm text-gray-300 hover:text-primary-400 transition-colors"
-                        >
-                          {value}
-                        </a>
-                      ) : (
-                        <p className="text-sm text-gray-300">{value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Social */}
-            <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-4">
-                Find me on
-              </h3>
-              <div className="flex gap-3">
-                {[
-                  { icon: Github, href: 'https://github.com/praveen', label: 'GitHub' },
-                  {
-                    icon: Linkedin,
-                    href: 'https://www.linkedin.com/in/praveenr10',
-                    label: 'LinkedIn',
-                  },
-                  { icon: Mail, href: 'mailto:praveenravi550@gmail.com', label: 'Email' },
-                ].map(({ icon: Icon, href, label }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target={href.startsWith('mailto') ? undefined : '_blank'}
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-primary-500/50 hover:bg-primary-500/10 transition-all duration-200"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-
-            {/* Response time */}
-            <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm font-medium text-emerald-400">Quick responder</span>
-              </div>
-              <p className="text-xs text-gray-400">
-                I typically respond within 24–48 hours.
-              </p>
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              Open to opportunities — actively looking for new roles
             </div>
           </motion.div>
 
-          {/* Right — Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-3"
-          >
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-8 space-y-5"
-              noValidate
-              aria-label="Contact form"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <FormField label="Name" error={errors.name?.message} required>
-                  <input
-                    {...register('name')}
-                    type="text"
-                    placeholder="Praveen Kumar"
-                    className={cn(inputClass, errors.name && 'border-red-500/50 focus:ring-red-500')}
-                    autoComplete="name"
-                  />
-                </FormField>
-
-                <FormField label="Email" error={errors.email?.message} required>
-                  <input
-                    {...register('email')}
-                    type="email"
-                    placeholder="you@example.com"
-                    className={cn(
-                      inputClass,
-                      errors.email && 'border-red-500/50 focus:ring-red-500'
-                    )}
-                    autoComplete="email"
-                  />
-                </FormField>
-              </div>
-
-              <FormField label="Subject" error={errors.subject?.message} required>
-                <input
-                  {...register('subject')}
-                  type="text"
-                  placeholder="Let's discuss a project..."
-                  className={cn(
-                    inputClass,
-                    errors.subject && 'border-red-500/50 focus:ring-red-500'
-                  )}
-                />
-              </FormField>
-
-              <FormField label="Message" error={errors.message?.message} required>
-                <div className="relative">
-                  <textarea
-                    {...register('message')}
-                    rows={5}
-                    placeholder="Tell me about your project, role, or anything you'd like to discuss..."
-                    className={cn(
-                      inputClass,
-                      'resize-none',
-                      errors.message && 'border-red-500/50 focus:ring-red-500'
-                    )}
-                  />
-                  <span
-                    className={cn(
-                      'absolute bottom-2 right-3 text-xs',
-                      messageLength > 900 ? 'text-amber-400' : 'text-gray-600'
-                    )}
-                  >
-                    {messageLength}/1000
-                  </span>
-                </div>
-              </FormField>
-
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                loading={isSubmitting}
-                disabled={!isValid || isSubmitting}
-                rightIcon={<Send className="w-4 h-4" />}
-                className="w-full justify-center"
+          {/* Contact cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {CONTACT_ITEMS.map(({ icon: Icon, label, value, href }, i) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-dark-card border border-dark-border rounded-xl p-5 flex flex-col items-center gap-3 hover:border-primary-500/30 transition-all duration-300 group"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
+                <div className="w-12 h-12 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center group-hover:bg-primary-500/20 transition-colors">
+                  <Icon className="w-5 h-5 text-primary-400" />
+                </div>
+                <div className="text-center">
+                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">{label}</p>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="text-sm text-gray-200 hover:text-primary-400 transition-colors font-medium break-all"
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    <p className="text-sm text-gray-200 font-medium">{value}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-              <p className="text-xs text-gray-500 text-center">
-                Your data is safe. I never share your information.
-              </p>
-            </form>
+          {/* Social links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {SOCIALS.map(({ icon: Icon, label, value, href }, i) => (
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-dark-card border border-dark-border rounded-xl p-5 flex items-center gap-4 hover:border-primary-500/30 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 transition-colors">
+                  <Icon className="w-5 h-5 text-primary-400" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">{label}</p>
+                  <p className="text-sm text-gray-200 font-medium group-hover:text-primary-400 transition-colors">
+                    {value}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Big CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-center"
+          >
+            <p className="text-gray-400 text-sm mb-5">
+              Prefer email? Click below to open your mail client.
+            </p>
+            <a
+              href="mailto:rpraveen.0010@gmail.com"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-semibold text-sm transition-all duration-200 hover:shadow-glow"
+            >
+              <Mail className="w-4 h-4" />
+              rpraveen.0010@gmail.com
+            </a>
           </motion.div>
         </div>
       </div>
