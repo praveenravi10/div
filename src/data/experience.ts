@@ -7,7 +7,7 @@ export const experiences: Experience[] = [
     company: 'SBNA Software Solutions Pvt. Ltd.',
     location: 'Coimbatore, TN, India',
     startDate: 'Oct 2023',
-    endDate: 'Present',
+    endDate: 'Apr 2026',
     description: [
       'Developed and maintained scalable frontend features using React, improving application performance by 30%.',
       'Directly collaborated with clients to gather functional and UI requirements.',
