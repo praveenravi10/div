@@ -51,9 +51,18 @@ export function About() {
             </div>
 
             {/* Location */}
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <MapPin className="w-4 h-4 text-primary-400" />
-              <span>Coimbatore, TN, India</span>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <MapPin className="w-4 h-4 text-primary-400 shrink-0" />
+                <span>Coimbatore, TN, India</span>
+              </div>
+              <div className="flex items-start gap-2 text-gray-400 text-sm">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>
+                  <span className="text-emerald-400 font-medium">Willing to relocate: </span>
+                  Coimbatore · Bangalore · Chennai · Hyderabad · Pune
+                </span>
+              </div>
             </div>
 
             {/* Stats grid */}
