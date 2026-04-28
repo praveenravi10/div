@@ -45,10 +45,15 @@ export function About() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center lg:items-start gap-8"
           >
-            {/* Avatar placeholder */}
+            {/* Avatar */}
             <div className="relative">
-              <div className="w-52 h-52 rounded-2xl bg-gradient-to-br from-primary-600/30 to-accent-600/30 border border-primary-500/20 flex items-center justify-center text-8xl font-bold text-white/20 select-none">
-                P
+              <div className="w-52 h-52 rounded-2xl overflow-hidden border-2 border-primary-500/30 shadow-glow">
+                <img
+                  src={`${import.meta.env.BASE_URL}praveen.jpeg`}
+                  alt="Praveen R"
+                  className="w-full h-full object-cover object-top"
+                  loading="eager"
+                />
               </div>
               {/* Floating badge */}
               <div className="absolute -bottom-4 -right-4 bg-dark-card border border-dark-border rounded-xl px-3 py-2 flex items-center gap-2">

@@ -163,7 +163,7 @@ export function Hero() {
             variant="outline"
             size="lg"
             as="a"
-            href="/resume.pdf"
+            href={`${import.meta.env.BASE_URL}rpraveen.pdf`}
             target="_blank"
             rel="noopener noreferrer"
             leftIcon={<Download className="w-4 h-4" />}

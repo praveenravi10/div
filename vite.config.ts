@@ -16,7 +16,6 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           animations: ['framer-motion'],
-          forms: ['react-hook-form', 'zod', '@hookform/resolvers'],
         },
       },
     },
