@@ -11,7 +11,7 @@ export const projects: Project[] = [
     tech: ['React', 'TypeScript', 'ACS SDK', 'WebRTC', 'ag-Grid', 'Axios', 'JWT', 'Node.js'],
     category: 'frontend',
     featured: true,
-    year: 2024,
+    year: 2026,
   },
   {
     id: 'fifth-third',
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     tech: ['React', 'TypeScript', 'Redux', 'Context API', 'MUI DataGrid', '.NET Core', 'JWT'],
     category: 'frontend',
     featured: true,
-    year: 2024,
+    year: 2025,
   },
   {
     id: 'ott-platform',
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     tech: ['React', 'JavaScript', 'TypeScript', 'REST APIs', 'Tailwind CSS', 'Bootstrap'],
     category: 'frontend',
     featured: true,
-    year: 2023,
+    year: 2024,
   },
 ];
 

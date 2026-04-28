@@ -30,8 +30,6 @@ const SKILL_CATEGORIES = [
       { name: 'Express.js', highlight: true },
       { name: 'REST API', highlight: false },
       { name: 'JWT Auth', highlight: false },
-      { name: 'Firebase Auth', highlight: false },
-      { name: 'RBAC', highlight: false },
     ],
   },
   {
@@ -41,9 +39,7 @@ const SKILL_CATEGORIES = [
     iconBg: 'bg-amber-500/10 border-amber-500/20',
     skills: [
       { name: 'MongoDB', highlight: false },
-      { name: 'Mongoose', highlight: false },
-      { name: 'Schema Design', highlight: false },
-      { name: 'Aggregation Pipelines', highlight: false },
+      { name: 'PostgreSQL', highlight: false },
     ],
   },
   {
@@ -55,8 +51,6 @@ const SKILL_CATEGORIES = [
       { name: 'WebSockets', highlight: true },
       { name: 'SIP.js', highlight: true },
       { name: 'WebRTC', highlight: true },
-      { name: 'Azure AI Agent', highlight: true },
-      { name: 'Azure Cognitive Search', highlight: true },
       { name: 'Azure OpenAI', highlight: true },
     ],
   },
