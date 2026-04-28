@@ -39,7 +39,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary-500/40;
+    @apply bg-primary-600/60;
   }
 
   /* Focus ring */

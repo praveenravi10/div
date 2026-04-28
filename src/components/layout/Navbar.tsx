@@ -107,7 +107,16 @@ export function Navbar() {
           </ul>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            {/* Resume button */}
+            <a
+              href={`${import.meta.env.BASE_URL}rpraveen.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium transition-all duration-200 shadow-glow hover:shadow-glow-lg"
+            >
+              Resume
+            </a>
             <button
               onClick={toggleTheme}
               className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
