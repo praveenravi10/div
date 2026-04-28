@@ -1,131 +1,141 @@
-import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Code2, Server, Database, Radio, Wrench, Lightbulb } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { cn } from '@/lib/utils';
-import { skills, skillCategories } from '@/data/skills';
-import { SkillCategory } from '@/types';
 
-function SkillBar({ name, level, color }: { name: string; level: number; color?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="space-y-2 group"
-    >
-      <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
-          {name}
-        </span>
-        <span className="text-xs font-mono text-gray-500">{level}%</span>
-      </div>
-      <div
-        className="h-1.5 bg-white/5 rounded-full overflow-hidden"
-        role="progressbar"
-        aria-valuenow={level}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={`${name} proficiency: ${level}%`}
-        ref={ref}
-      >
-        <motion.div
-          className="h-full rounded-full"
-          style={{ backgroundColor: color || '#3b82f6' }}
-          initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-        />
-      </div>
-    </motion.div>
-  );
-}
+const SKILL_CATEGORIES = [
+  {
+    title: 'Frontend',
+    icon: Code2,
+    color: 'text-primary-400',
+    iconBg: 'bg-primary-500/10 border-primary-500/20',
+    skills: [
+      { name: 'React.js', highlight: true },
+      { name: 'TypeScript', highlight: true },
+      { name: 'Redux Toolkit', highlight: false },
+      { name: 'React Query', highlight: false },
+      { name: 'Zustand', highlight: false },
+      { name: 'TailwindCSS', highlight: false },
+      { name: 'JavaScript (ES6+)', highlight: false },
+      { name: 'HTML5', highlight: false },
+      { name: 'CSS3/SCSS', highlight: false },
+    ],
+  },
+  {
+    title: 'Backend',
+    icon: Server,
+    color: 'text-emerald-400',
+    iconBg: 'bg-emerald-500/10 border-emerald-500/20',
+    skills: [
+      { name: 'Node.js', highlight: true },
+      { name: 'Express.js', highlight: true },
+      { name: 'REST API', highlight: false },
+      { name: 'JWT Auth', highlight: false },
+      { name: 'Firebase Auth', highlight: false },
+      { name: 'RBAC', highlight: false },
+    ],
+  },
+  {
+    title: 'Database',
+    icon: Database,
+    color: 'text-amber-400',
+    iconBg: 'bg-amber-500/10 border-amber-500/20',
+    skills: [
+      { name: 'MongoDB', highlight: false },
+      { name: 'Mongoose', highlight: false },
+      { name: 'Schema Design', highlight: false },
+      { name: 'Aggregation Pipelines', highlight: false },
+    ],
+  },
+  {
+    title: 'Real-Time & AI',
+    icon: Radio,
+    color: 'text-primary-400',
+    iconBg: 'bg-primary-500/10 border-primary-500/20',
+    skills: [
+      { name: 'WebSockets', highlight: true },
+      { name: 'SIP.js', highlight: true },
+      { name: 'WebRTC', highlight: true },
+      { name: 'Azure AI Agent', highlight: true },
+      { name: 'Azure Cognitive Search', highlight: true },
+      { name: 'Azure OpenAI', highlight: true },
+    ],
+  },
+  {
+    title: 'DevOps & Tools',
+    icon: Wrench,
+    color: 'text-cyan-400',
+    iconBg: 'bg-cyan-500/10 border-cyan-500/20',
+    skills: [
+      { name: 'Docker', highlight: false },
+      { name: 'Nginx', highlight: false },
+      { name: 'Git', highlight: false },
+      { name: 'GitHub', highlight: false },
+      { name: 'CI/CD', highlight: false },
+      { name: 'Jest', highlight: false },
+      { name: 'React Testing Library', highlight: false },
+    ],
+  },
+  {
+    title: 'Concepts',
+    icon: Lightbulb,
+    color: 'text-rose-400',
+    iconBg: 'bg-rose-500/10 border-rose-500/20',
+    skills: [
+      { name: 'Component Architecture', highlight: false },
+      { name: 'Performance Optimization', highlight: false },
+      { name: 'State Management', highlight: false },
+      { name: 'Real-Time Communication', highlight: false },
+      { name: 'Agile/Scrum', highlight: false },
+    ],
+  },
+];
 
 export function Skills() {
-  const [activeCategory, setActiveCategory] = useState<SkillCategory>('frontend');
-
-  const filtered = skills.filter((s) => s.category === activeCategory);
-
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-dark-surface/50" aria-label="Skills">
+    <section id="skills" className="py-24 sm:py-32" aria-label="Skills">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           tag="expertise"
-          title="Skills & Technologies"
-          subtitle="The tools I use to turn ideas into high-quality products"
+          title="Technical Skills"
+          subtitle="Comprehensive skill set spanning frontend development, backend APIs, real-time systems, and AI integrations."
         />
 
-        {/* Category tabs */}
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {skillCategories.map(({ value, label }) => (
-            <button
-              key={value}
-              onClick={() => setActiveCategory(value as SkillCategory)}
-              className={cn(
-                'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500',
-                activeCategory === value
-                  ? 'bg-primary-600 text-white shadow-glow'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10'
-              )}
-              aria-pressed={activeCategory === value}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SKILL_CATEGORIES.map(({ title, icon: Icon, color, iconBg, skills }, i) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="bg-dark-card border border-dark-border rounded-2xl p-6 hover:border-primary-500/20 transition-all duration-300"
             >
-              {label}
-            </button>
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${iconBg}`}>
+                  <Icon className={`w-4 h-4 ${color}`} />
+                </div>
+                <h3 className="font-semibold text-white text-base">{title}</h3>
+              </div>
+
+              {/* Skill chips */}
+              <div className="flex flex-wrap gap-2">
+                {skills.map(({ name, highlight }) => (
+                  <span
+                    key={name}
+                    className={
+                      highlight
+                        ? 'px-3 py-1 rounded-full text-xs font-medium bg-primary-500/20 text-primary-300 border border-primary-500/30'
+                        : 'px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-400 border border-white/10 hover:border-white/20 hover:text-gray-300 transition-colors'
+                    }
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Skills grid */}
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5 max-w-4xl mx-auto"
-        >
-          {filtered.map((skill) => (
-            <SkillBar key={skill.name} {...skill} />
-          ))}
-        </motion.div>
-
-        {/* Tech cloud */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-xs text-gray-500 uppercase tracking-widest font-mono mb-6">
-            // Also comfortable with
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {[
-              'React Query',
-              'Redux Toolkit',
-              'Axios',
-              'Storybook',
-              'Cypress',
-              'Docker basics',
-              'CI/CD',
-              'Figma',
-              'Postman',
-              'Linux',
-              'PostgreSQL',
-              'MongoDB',
-            ].map((tech) => (
-              <motion.span
-                key={tech}
-                whileHover={{ scale: 1.05 }}
-                className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:border-primary-500/30 transition-all duration-200 cursor-default"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
