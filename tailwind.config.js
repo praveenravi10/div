@@ -31,7 +31,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Times New Roman"', 'Georgia', 'Cambria', 'Times', 'serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Consolas', 'monospace'],
       },
       animation: {
