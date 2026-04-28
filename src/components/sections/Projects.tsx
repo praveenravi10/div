@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Star } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -35,14 +35,11 @@ function ProjectCard({
             {project.title.slice(0, 2)}
           </div>
         </div>
-        {project.featured && (
-          <div className="absolute top-3 right-3">
-            <Badge variant="warning" className="flex items-center gap-1">
-              <Star className="w-3 h-3 fill-amber-400" />
-              Featured
-            </Badge>
-          </div>
-        )}
+        <div className="absolute top-3 right-3">
+          <Badge variant="success" className="flex items-center gap-1">
+            Professional
+          </Badge>
+        </div>
         <div className="absolute top-3 left-3">
           <Badge variant="primary">{project.year}</Badge>
         </div>
@@ -108,9 +105,9 @@ export function Projects() {
     <section id="projects" className="py-24 sm:py-32" aria-label="Projects">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
-          tag="my work"
-          title="Featured Projects"
-          subtitle="A selection of real-world projects I've built and shipped"
+          tag="professional work"
+          title="Projects I've Built"
+          subtitle="Real-world products I developed and shipped at my current company"
         />
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
