@@ -1,29 +1,11 @@
 import { motion } from 'framer-motion';
-import {
-  MapPin,
-  Briefcase,
-  GraduationCap,
-  Coffee,
-  Phone,
-  Wifi,
-  Code,
-  Zap,
-} from 'lucide-react';
+import { MapPin, Briefcase, GraduationCap, FolderOpen } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Badge } from '@/components/ui/Badge';
 
 const STATS = [
-  { value: '4+', label: 'Years Experience', icon: Briefcase },
-  { value: '15+', label: 'Projects Shipped', icon: Code },
-  { value: '500+', label: 'Daily Agent Users', icon: Phone },
-  { value: '99.9%', label: 'System Uptime', icon: Zap },
-];
-
-const INTERESTS = [
-  { icon: Code, text: 'React & TypeScript' },
-  { icon: Wifi, text: 'Real-time systems' },
-  { icon: GraduationCap, text: 'Frontend architecture' },
-  { icon: Coffee, text: 'Agile & clean code' },
+  { value: '4', sub: 'Years', label: 'Experience', icon: Briefcase },
+  { value: '10+', sub: 'Projects', label: 'Completed', icon: FolderOpen },
+  { value: 'MCA.', sub: 'Computer', label: 'Application', icon: GraduationCap },
 ];
 
 export function About() {
@@ -75,19 +57,20 @@ export function About() {
             </div>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
-              {STATS.map(({ value, label, icon: Icon }, i) => (
+            <div className="grid grid-cols-3 gap-3 w-full max-w-sm">
+              {STATS.map(({ value, sub, label, icon: Icon }, i) => (
                 <motion.div
                   key={label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-dark-card border border-dark-border rounded-xl p-4 flex flex-col gap-2"
+                  className="bg-dark-card border border-dark-border rounded-xl p-4 flex flex-col gap-1.5 items-center text-center"
                 >
-                  <Icon className="w-5 h-5 text-primary-400" />
-                  <div className="text-2xl font-bold text-white">{value}</div>
-                  <div className="text-xs text-gray-400">{label}</div>
+                  <Icon className="w-4 h-4 text-primary-400" />
+                  <div className="text-xl font-bold text-white leading-tight">{value}</div>
+                  <div className="text-[11px] text-primary-400 font-medium leading-tight">{sub}</div>
+                  <div className="text-[11px] text-gray-500 leading-tight">{label}</div>
                 </motion.div>
               ))}
             </div>
@@ -129,31 +112,6 @@ export function About() {
               </p>
             </div>
 
-            {/* Interests */}
-            <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-4">
-                What I&apos;m into
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {INTERESTS.map(({ icon: Icon, text }) => (
-                  <Badge key={text} variant="primary" className="flex items-center gap-1.5 py-1.5">
-                    <Icon className="w-3 h-3" />
-                    {text}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Tech mention */}
-            <div className="p-4 rounded-xl bg-dark-card border border-dark-border font-mono text-sm">
-              <p className="text-gray-500">// current focus</p>
-              <p className="text-primary-400 mt-1">
-                const stack = [<span className="text-emerald-400">&apos;React&apos;</span>,{' '}
-                <span className="text-emerald-400">&apos;TypeScript&apos;</span>,{' '}
-                <span className="text-emerald-400">&apos;Redux&apos;</span>,{' '}
-                <span className="text-emerald-400">&apos;Node.js&apos;</span>];
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

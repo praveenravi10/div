@@ -234,15 +234,6 @@ export function Hero() {
               <p className="text-lg font-bold text-white">4+ <span className="text-xs font-normal text-gray-400">Years</span></p>
             </motion.div>
 
-            {/* Floating badge: Projects */}
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -right-4 sm:-right-8 bottom-1/4 bg-dark-card border border-dark-border rounded-xl px-3 py-2 shadow-xl"
-            >
-              <p className="text-xs text-gray-400">Projects</p>
-              <p className="text-lg font-bold text-white">15+ <span className="text-xs font-normal text-gray-400">Done</span></p>
-            </motion.div>
           </div>
         </motion.div>
 
