@@ -3,7 +3,7 @@ import { MapPin, Briefcase, GraduationCap, FolderOpen } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
 const STATS = [
-  { value: '4', sub: 'Years', label: 'Experience', icon: Briefcase },
+  { value: '4+', sub: 'Years', label: 'Experience', icon: Briefcase },
   { value: '10+', sub: 'Projects', label: 'Completed', icon: FolderOpen },
   { value: 'MCA.', sub: 'Computer', label: 'Application', icon: GraduationCap },
 ];
