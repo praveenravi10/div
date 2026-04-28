@@ -1,26 +1,21 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Code2, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Code2, Heart } from 'lucide-react';
 import { scrollToSection } from '@/lib/utils';
 
 const SOCIAL_LINKS = [
   {
     icon: Github,
-    href: 'https://github.com/praveen',
+    href: 'https://github.com/praveenravi10',
     label: 'GitHub',
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/in/praveen',
+    href: 'https://www.linkedin.com/in/praveenr10',
     label: 'LinkedIn',
   },
   {
-    icon: Twitter,
-    href: 'https://twitter.com/praveen',
-    label: 'Twitter',
-  },
-  {
     icon: Mail,
-    href: 'mailto:praveen@example.com',
+    href: 'mailto:rpraveen.0010@gmail.com',
     label: 'Email',
   },
 ];
